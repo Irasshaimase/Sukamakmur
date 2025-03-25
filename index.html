@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kehidupan Sehari-hari</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Arial", sans-serif;
+        }
+
+        /* Latar Belakang Dinamis */
+        body {
+            transition: background 0.5s ease-in-out;
+            text-align: center;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Header */
+        .header {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Quote Kehidupan */
+        .quote-box {
+            font-size: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+            max-width: 500px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .quote-box:hover {
+            transform: scale(1.05);
+        }
+
+        /* Tombol Musik */
+        .music-controls {
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            background: orangered;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: darkred;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">🌿 Hidup Bahagia Setiap Hari 🌿</div>
+
+    <!-- Box Quote Kehidupan -->
+    <div class="quote-box" id="quote">
+        "Kebahagiaan bukanlah sesuatu yang siap dibuat. Itu berasal dari tindakan Anda sendiri." – Dalai Lama
+    </div>
+
+    <!-- Tombol Ganti Quote -->
+    <button onclick="changeQuote()">Ganti Quote</button>
+
+    <!-- Musik -->
+    <div class="music-controls">
+        <audio id="bg-music" loop>
+            <source src="https://www.bensound.com/bensound-music/bensound-relaxing.mp3" type="audio/mp3">
+            Browser Anda tidak mendukung audio.
+        </audio>
+        <button onclick="playMusic()">Putar Musik</button>
+        <button onclick="pauseMusic()">Stop Musik</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 Kehidupan Sehari-hari | Semua Hak Dilindungi</footer>
+
+    <script>
+        // Daftar Quote Kehidupan
+        const quotes = [
+            "Hidup adalah petualangan yang luar biasa, nikmatilah setiap momennya.",
+            "Kunci kebahagiaan adalah bersyukur dengan apa yang kita miliki.",
+            "Hari ini adalah anugerah, itulah sebabnya disebut 'present'.",
+            "Jangan takut gagal, karena kegagalan adalah langkah menuju kesuksesan.",
+            "Mimpi tidak akan terwujud tanpa kerja keras dan tekad.",
+            "Jadilah perubahan yang ingin kamu lihat di dunia ini.",
+            "Tersenyumlah, karena itu adalah bahasa universal kebahagiaan."
+        ];
+
+        // Ganti Quote Random
+        function changeQuote() {
+            const quoteBox = document.getElementById("quote");
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteBox.innerHTML = `"${quotes[randomIndex]}"`;
+        }
+
+        // Musik Play/Pause
+        function playMusic() {
+            document.getElementById("bg-music").play();
+        }
+
+        function pauseMusic() {
+            document.getElementById("bg-music").pause();
+        }
+
+        // Latar Belakang Berdasarkan Waktu
+        function updateBackground() {
+            const hour = new Date().getHours();
+            const body = document.body;
+            if (hour >= 6 && hour < 18) {
+                body.style.background = "url('https://source.unsplash.com/1600x900/?nature,day') no-repeat center center/cover";
+            } else {
+                body.style.background = "url('https://source.unsplash.com/1600x900/?night,stars') no-repeat center center/cover";
+            }
+        }
+        
+        // Jalankan saat halaman dimuat
+        updateBackground();
+    </script>
+
+</body>
+</html>
